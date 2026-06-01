@@ -295,6 +295,10 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
 }
 
+.logo-mobile {
+    display: none; /* Hide mobile logo on desktop to prevent duplicate logo */
+}
+
 .logo-img {
     height: 60px;
     width: auto;
@@ -304,6 +308,34 @@ h1, h2, h3, h4, h5, h6 {
 
 .header.scrolled .logo-img {
     height: 50px;
+}
+
+@media (max-width: 1024px) {
+    .logo-mobile {
+        display: flex; /* Show mobile logo on tablet/mobile */
+    }
+    .logo-mobile .logo-img {
+        height: 45px; /* Scale down logo on mobile to prevent wrapping */
+    }
+    .header.scrolled .logo-mobile .logo-img {
+        height: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo-mobile .logo-img {
+        height: 40px;
+    }
+    .header.scrolled .logo-mobile .logo-img {
+        height: 35px;
+    }
+    /* Hide phone number text on mobile, keep only tap-to-call icon to save space and prevent wrapping */
+    .nav-phone span {
+        display: none;
+    }
+    .nav-phone {
+        gap: 0;
+    }
 }
 
 /* Right Nav Block */

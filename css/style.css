@@ -477,7 +477,7 @@ h1, h2, h3, h4, h5, h6 {
     min-width: 100%;
     min-height: 100%;
     transform: translate(-50%, -50%);
-    z-index: -2;
+    z-index: 1; /* sits above the CSS background-image fallback */
     pointer-events: none;
 }
 
@@ -500,8 +500,7 @@ h1, h2, h3, h4, h5, h6 {
         rgba(0, 0, 0, 0.70) 50%,
         rgba(5, 5, 5, 0.95) 100%
     );
-    background-color: rgba(0, 0, 0, 0.60); /* solid fallback for when gradient isn't supported */
-    z-index: -1;
+    z-index: 2; /* above the video, below the text */
 }
 
 /* Hero Content Area */
@@ -511,6 +510,8 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     margin-top: auto;
     margin-bottom: auto;
+    position: relative;
+    z-index: 3; /* above overlay */
 }
 
 .hero-grid {

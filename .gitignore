@@ -1,0 +1,11 @@
+# Local environment variables — never commit secrets to git
+.dev.vars
+
+# Node / build artifacts
+node_modules/
+dist/
+.wrangler/
+
+# OS files
+.DS_Store
+Thumbs.db

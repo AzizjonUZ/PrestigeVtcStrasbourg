@@ -460,6 +460,11 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: calc(var(--header-height) + 2rem);
     padding-bottom: 3rem;
     overflow: hidden;
+    /* Fallback image shown when YouTube iframe doesn't load (ad-blockers, iOS, etc.) */
+    background-image: url('https://images.pexels.com/photos/5545890/pexels-photo-5545890.jpeg?auto=compress&cs=tinysrgb&w=1920');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* YouTube iframe background wrapper */
@@ -491,11 +496,11 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
     background: linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 0.4) 0%,
-        rgba(0, 0, 0, 0.6) 50%,
-        rgba(5, 5, 5, 0.95) 100__%
+        rgba(0, 0, 0, 0.55) 0%,
+        rgba(0, 0, 0, 0.70) 50%,
+        rgba(5, 5, 5, 0.95) 100%
     );
-    background-color: rgba(5, 5, 5, 0.35); /* general overlay fallback */
+    background-color: rgba(0, 0, 0, 0.60); /* solid fallback for when gradient isn't supported */
     z-index: -1;
 }
 

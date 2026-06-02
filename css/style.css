@@ -299,36 +299,68 @@ h1, h2, h3, h4, h5, h6 {
     display: none; /* Hide mobile logo on desktop to prevent duplicate logo */
 }
 
-.logo-img {
-    height: 60px;
-    width: auto;
-    object-fit: contain;
-    transition: all var(--transition-normal);
+/* Premium Text Logo */
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1.15;
+    transition: transform var(--transition-normal);
 }
 
-.header.scrolled .logo-img {
-    height: 50px;
+.logo-text:hover {
+    transform: translateY(-1px);
+}
+
+.logo-text .logo-title {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--color-white);
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 50%, var(--color-gold-deep) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: font-size var(--transition-normal);
+}
+
+.logo-text .logo-subtitle {
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.4em;
+    color: var(--color-white);
+    text-transform: uppercase;
+    margin-top: 0.15rem;
+    margin-left: 0.4em; /* offset letter-spacing to center properly */
+    white-space: nowrap;
+    opacity: 0.95;
+    transition: font-size var(--transition-normal);
+}
+
+/* Header Scrolled - subtle text size reduction */
+.header.scrolled .logo-text .logo-title {
+    font-size: 1.2rem;
+}
+
+.header.scrolled .logo-text .logo-subtitle {
+    font-size: 0.58rem;
+    margin-top: 0.1rem;
 }
 
 @media (max-width: 1024px) {
     .logo-mobile {
         display: flex; /* Show mobile logo on tablet/mobile */
     }
-    .logo-mobile .logo-img {
-        height: 45px; /* Scale down logo on mobile to prevent wrapping */
-    }
-    .header.scrolled .logo-mobile .logo-img {
-        height: 40px;
-    }
 }
 
 @media (max-width: 768px) {
-    .logo-mobile .logo-img {
-        height: 40px;
-    }
-    .header.scrolled .logo-mobile .logo-img {
-        height: 35px;
-    }
     /* Hide phone number text on mobile, keep only tap-to-call icon to save space and prevent wrapping */
     .nav-phone span {
         display: none;
@@ -338,13 +370,22 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* Bigger logo on small mobile */
 @media (max-width: 480px) {
-    .logo-mobile .logo-img {
-        height: 50px;
+    /* Scale down font sizes on small mobile to fit without wrapping */
+    .logo-text .logo-title {
+        font-size: 1.1rem;
+        letter-spacing: 0.12em;
     }
-    .header.scrolled .logo-mobile .logo-img {
-        height: 44px;
+    .logo-text .logo-subtitle {
+        font-size: 0.55rem;
+        letter-spacing: 0.35em;
+        margin-left: 0.35em;
+    }
+    .header.scrolled .logo-text .logo-title {
+        font-size: 1.05rem;
+    }
+    .header.scrolled .logo-text .logo-subtitle {
+        font-size: 0.5rem;
     }
 }
 
@@ -467,24 +508,15 @@ h1, h2, h3, h4, h5, h6 {
     background-repeat: no-repeat;
 }
 
-/* YouTube iframe background wrapper */
+/* Hero local video background */
 .hero-video-bg {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 177.78vh; /* 16:9 at full height */
-    height: 56.25vw; /* 16:9 at full width */
-    min-width: 100%;
-    min-height: 100%;
-    transform: translate(-50%, -50%);
-    z-index: 1; /* sits above the CSS background-image fallback */
-    pointer-events: none;
-}
-
-.hero-video-bg iframe {
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    border: none;
+    object-fit: cover;
+    z-index: 1; /* sits above the CSS background-image fallback */
     pointer-events: none;
 }
 
@@ -1578,9 +1610,13 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1rem;
 }
 
-.footer-brand .footer-logo img {
-    height: 55px;
-    width: auto;
+.footer-logo-text {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.footer-logo-text .logo-subtitle {
+    margin-left: 0.15em;
 }
 
 .footer-brand-text {

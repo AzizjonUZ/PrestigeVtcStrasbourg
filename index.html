@@ -149,8 +149,9 @@
                     <li><a href="#vehicule" class="nav-link">Véhicule</a></li>
                     <!-- Logo centered visually -->
                     <li class="nav-logo-item">
-                        <a href="#accueil" class="logo">
-                            <img src="images/logo.svg" alt="Prestige VTC Strasbourg Chauffeur Privé" class="logo-img">
+                        <a href="#accueil" class="logo logo-text">
+                            <span class="logo-title">PRESTIGE VTC</span>
+                            <span class="logo-subtitle">Strasbourg</span>
                         </a>
                     </li>
                     <li><a href="#tarifs" class="nav-link">Tarifs</a></li>
@@ -158,8 +159,9 @@
                 </ul>
 
                 <!-- Mobile Logo (Left on Mobile) -->
-                <a href="#accueil" class="logo logo-mobile menu-toggle-target">
-                    <img src="images/logo.svg" alt="Prestige VTC Strasbourg Chauffeur Privé" class="logo-img">
+                <a href="#accueil" class="logo logo-mobile logo-text menu-toggle-target">
+                    <span class="logo-title">PRESTIGE VTC</span>
+                    <span class="logo-subtitle">Strasbourg</span>
                 </a>
 
                 <!-- CTA (Right) -->
@@ -181,7 +183,10 @@
     <!-- Mobile Side Menu Navigation Overlay -->
     <div class="mobile-nav" id="mobile-menu">
         <button class="mobile-nav-close" aria-label="Fermer le menu" id="hamburger-close">&times;</button>
-        <img src="images/logo.svg" alt="Prestige VTC Strasbourg" style="height: 60px; margin-bottom: 2rem;">
+        <a href="#accueil" class="logo logo-text mobile-overlay-logo" style="margin-bottom: 2rem;">
+            <span class="logo-title">PRESTIGE VTC</span>
+            <span class="logo-subtitle">Strasbourg</span>
+        </a>
         <ul class="mobile-nav-menu">
             <li><a href="#accueil" class="mobile-nav-link">Accueil</a></li>
             <li><a href="#services" class="mobile-nav-link">Nos Services</a></li>
@@ -204,16 +209,10 @@
        2. HERO / ACCUEIL SECTION
        ========================================================================== -->
     <section id="accueil" class="hero">
-        <!-- YouTube video background -->
-        <div class="hero-video-bg">
-            <iframe
-                src="https://www.youtube-nocookie.com/embed/SROlUK8a_PY?autoplay=1&mute=1&loop=1&playlist=SROlUK8a_PY&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&playsinline=1"
-                title="Prestige VTC Strasbourg"
-                frameborder="0"
-                allow="autoplay; encrypted-media"
-                allowfullscreen
-            ></iframe>
-        </div>
+        <!-- Local video background -->
+        <video autoplay muted loop playsinline class="hero-video-bg" poster="images/hero_bg.png">
+            <source src="images/Prestige-BG.webm" type="video/webm">
+        </video>
         <div class="hero-overlay"></div>
 
         <div class="hero-content-wrapper">
@@ -1180,8 +1179,9 @@
             <div class="footer-grid">
                 <!-- Brand Column -->
                 <div class="footer-brand">
-                    <a href="#accueil" class="footer-logo">
-                        <img src="images/logo.svg" alt="Prestige VTC Strasbourg logo">
+                    <a href="#accueil" class="footer-logo logo-text footer-logo-text">
+                        <span class="logo-title">PRESTIGE VTC</span>
+                        <span class="logo-subtitle">Strasbourg</span>
                     </a>
                     <p class="footer-brand-text">
                         Prestige VTC Strasbourg propose un service de transport privé premium et écologique en Alsace.

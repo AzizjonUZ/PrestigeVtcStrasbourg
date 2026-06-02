@@ -1,0 +1,10 @@
+.git
+.gitignore
+.dev.vars
+wrangler.toml
+index.js
+functions
+node_modules
+.wrangler
+package.json
+package-lock.json

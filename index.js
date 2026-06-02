@@ -1,29 +1,40 @@
 /**
- * Cloudflare Pages Function for prestigevtcstrasbourg.fr
- * Handles reservation form submissions at POST /api/book,
- * verifies Turnstile tokens, and sends email notifications using the Resend API.
- * 
- * ENVIRONMENT VARIABLES REQUIRED (Set in Cloudflare Pages project settings):
- * - RESEND_API_KEY: Your API key from resend.com
- * - TURNSTILE_SECRET_KEY: (Optional) Your Turnstile Secret Key for spam prevention
+ * Cloudflare Worker for prestigevtcstrasbourg.fr
+ * Handles dynamic API requests (e.g. POST /api/book) and falls back to serving static assets.
  */
 
-// Handle CORS Preflight OPTIONS request
-export async function onRequestOptions(context) {
-  return new Response(null, {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
-      "Access-Control-Max-Age": "86400",
-    },
-  });
-}
+export default {
+  async fetch(request, env, ctx) {
+    const url = new URL(request.url);
 
-// Handle Form Submission POST request
-export async function onRequestPost(context) {
-  const { request, env } = context;
+    // Route POST /api/book to reservation handler
+    if (url.pathname === "/api/book" && request.method === "POST") {
+      return handleBookRequest(request, env);
+    }
 
+    // Optional: Log other routing falls
+    console.log(`Worker routing fallback for: ${url.pathname}`);
+
+    // If it is not the API, return 404. 
+    // Under Cloudflare Workers Assets, matching static assets are automatically served by the CDN.
+    // If a request hits this Worker script, it means it did not match any static asset.
+    return new Response(
+      JSON.stringify({ success: false, message: "Page non trouvée." }),
+      {
+        status: 404,
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
+  }
+};
+
+/**
+ * Handle form submissions and dispatch emails via Resend
+ */
+async function handleBookRequest(request, env) {
   try {
     const body = await request.json();
 
@@ -228,7 +239,7 @@ export async function onRequestPost(context) {
       );
     }
   } catch (err) {
-    console.error("Pages Function error:", err);
+    console.error("Worker error:", err);
     return new Response(
       JSON.stringify({ success: false, message: `Erreur interne du serveur: ${err.message}` }),
       {

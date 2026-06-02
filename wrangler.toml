@@ -1,0 +1,7 @@
+name = "prestige-vtc-strasbourg"
+main = "index.js"
+compatibility_date = "2025-01-02"
+
+[assets]
+directory = "."
+binding = "ASSETS"

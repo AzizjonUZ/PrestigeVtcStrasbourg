@@ -47,8 +47,12 @@ export async function onRequestPost(context) {
 
       const turnstileOutcome = await turnstileResult.json();
       if (!turnstileOutcome.success) {
+        const errorCodes = turnstileOutcome["error-codes"] ? turnstileOutcome["error-codes"].join(", ") : "inconnu";
         return new Response(
-          JSON.stringify({ success: false, message: "Validation CAPTCHA incorrect." }),
+          JSON.stringify({ 
+            success: false, 
+            message: `Échec de la validation CAPTCHA (Code: ${errorCodes}). Vérifiez vos clés Turnstile et le domaine.` 
+          }),
           {
             status: 400,
             headers: {
@@ -208,8 +212,12 @@ export async function onRequestPost(context) {
     } else {
       const resendError = await response.json();
       console.error("Resend API error:", resendError);
+      const resendMsg = resendError.message || (resendError.error && resendError.error.message) || JSON.stringify(resendError);
       return new Response(
-        JSON.stringify({ success: false, message: "Erreur lors de l'envoi de l'email." }),
+        JSON.stringify({ 
+          success: false, 
+          message: `Erreur lors de l'envoi de l'email (Resend: ${resendMsg}).` 
+        }),
         {
           status: 500,
           headers: {
@@ -222,7 +230,7 @@ export async function onRequestPost(context) {
   } catch (err) {
     console.error("Pages Function error:", err);
     return new Response(
-      JSON.stringify({ success: false, message: "Erreur interne du serveur." }),
+      JSON.stringify({ success: false, message: `Erreur interne du serveur: ${err.message}` }),
       {
         status: 500,
         headers: {

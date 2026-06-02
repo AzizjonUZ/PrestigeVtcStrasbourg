@@ -295,10 +295,6 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
 }
 
-.logo-mobile {
-    display: none; /* Hide mobile logo on desktop to prevent duplicate logo */
-}
-
 /* Premium Text Logo */
 .logo-text {
     display: flex;
@@ -313,6 +309,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .logo-text:hover {
     transform: translateY(-1px);
+}
+
+.logo-mobile {
+    display: none; /* Hide mobile logo on desktop to prevent duplicate logo */
 }
 
 .logo-text .logo-title {

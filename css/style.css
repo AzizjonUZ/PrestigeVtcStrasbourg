@@ -1304,6 +1304,9 @@ h1, h2, h3, h4, h5, h6 {
     .stat-strip {
         grid-template-columns: 1fr 1fr;
     }
+    .stat-number {
+        font-size: 2rem;
+    }
 }
 
 .stat-item {

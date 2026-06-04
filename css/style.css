@@ -1166,108 +1166,67 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   5. TARIFS SECTION
+   5. FONCTIONNEMENT SECTION
    ========================================================================== */
-.tarifs-section {
+.steps-section {
     background-color: var(--bg-primary);
 }
 
-.tarifs-grid {
+.steps-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
-@media (max-width: 1024px) {
-    .tarifs-grid {
+@media (max-width: 900px) {
+    .steps-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
 }
 
-.tarifs-category {
+.step-card {
     background-color: var(--bg-secondary);
     border: 1px solid var(--color-border);
     border-radius: 4px;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.tarifs-category.featured {
-    border-color: var(--color-gold-opacity);
-    box-shadow: 0 10px 30px rgba(201, 168, 76, 0.03);
+    padding: 3.5rem 2rem;
+    text-align: center;
     position: relative;
+    transition: transform var(--transition-normal), border-color var(--transition-normal);
 }
 
-.tarifs-category.featured::after {
-    content: 'POPULAIRE';
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+.step-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-border-gold);
+}
+
+.step-badge {
+    width: 3.5rem;
+    height: 3.5rem;
     background-color: var(--color-gold-opacity);
     border: 1px solid var(--color-border-gold);
     color: var(--color-gold-light);
-    font-size: 0.625rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    padding: 0.25rem 0.5rem;
-    border-radius: 2px;
-}
-
-.category-name {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--color-white);
-    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+    font-family: var(--font-serif);
 }
 
-.category-name svg {
-    width: 1.125rem;
-    height: 1.125rem;
-    stroke: var(--color-gold);
-}
-
-.pricing-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.pricing-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
-}
-
-.pricing-item:last-child {
-    border-bottom: none;
-}
-
-.route-name {
-    font-size: 0.8125rem;
-    color: var(--color-text-primary);
-}
-
-.price-val {
-    font-size: 0.9375rem;
+.step-title {
+    font-size: 1.25rem;
     font-weight: 600;
-    color: var(--color-gold);
+    color: var(--color-white);
+    margin-bottom: 1rem;
 }
 
-.pricing-disclaimer {
-    font-size: 0.75rem;
-    color: var(--color-text-muted);
-    text-align: center;
-    margin-top: 3rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+.step-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
 }
 
 /* ==========================================================================
